@@ -23,7 +23,7 @@ driver.quit()
 # Parse le contenu HTML
 soup = BeautifulSoup(page_source, 'html.parser')
 
-with open('.venv/testext.txt', 'w', encoding='utf-8') as file:
+with open('testext.txt', 'w', encoding='utf-8') as file:
     # Parcourir les titres et les enregistrer dans le fichier
     file.write(soup.get_text())
 
