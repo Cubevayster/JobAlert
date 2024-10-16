@@ -8,9 +8,11 @@ import time
 
 import scrap_indeed
 
+balise = "<<puechpuechpuechnourah!>>"
+
 job_descriptions = scrap_indeed.scrapFromKeywork("analyse d'images",2)
 
 with open('testext.txt', 'w', encoding='utf-8') as file:
     for ji in job_descriptions:
         file.write(ji)
-        file.write("\n----------------------------------------\n")
+        file.write("\n" + balise + "\n")
