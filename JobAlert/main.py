@@ -8,7 +8,7 @@ import time
 
 import scrap_indeed
 
-job_descriptions = scrap_indeed.scrapFromKeywork("analyse d'images")
+job_descriptions = scrap_indeed.scrapFromKeywork("analyse d'images",2)
 
 with open('testext.txt', 'w', encoding='utf-8') as file:
     for ji in job_descriptions:
