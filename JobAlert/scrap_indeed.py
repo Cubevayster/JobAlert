@@ -36,7 +36,7 @@ def scrapFromKeywork(keyword,pageCount):
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     # URL de la page web
-    url = 'https://fr.indeed.com/jobs?q='+keyword+'&l=Lyon+%2869%29&from=searchOnDesktopSerp&start'
+    url = 'https://fr.indeed.com/jobs?q='+keyword+'&l=Lyon+%2869%29&sort=date&from=searchOnDesktopSerp&start'
     print("Using URL=" + url)
 
     vjk_ids = []
