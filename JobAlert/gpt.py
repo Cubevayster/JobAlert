@@ -77,15 +77,15 @@ class GptAgent:
         if isinstance(prepromptPath,list):
             pp = ""
             for p in prepromptPath:
-                pp += open("prompts/"+p, "r").read()
+                pp += open(p, "r").read()
             self.preprompt = makePrePrompt(pp +"\n" + additionnal)
         else:
-            self.preprompt = makePrePrompt(open("prompts/"+prepromptPath, "r").read() + "\n" + additionnal)
+            self.preprompt = makePrePrompt(open(prepromptPath, "r").read() + "\n" + additionnal)
         self.context = [self.preprompt]
         self.lastTalked = 1
         
     def tellFromFile(self,file):
-        return self.tell(open("prompts/"+file, "r").read())
+        return self.tell(open(file, "r").read())
 
     def tell(self,request):
         self.context = gptRequest(self.context,makeRequest(request))

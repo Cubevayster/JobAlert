@@ -12,6 +12,18 @@ import time
 
 job_description_class = "fastviewjob jobsearch-ViewJobLayout--embedded css-1s5gqtr eu4oa1w0 hydrated"
 
+knownVJK = []
+
+def loadKnownVJK(fileName):
+    try:
+        with open(fileName, 'r', encoding='utf-8') as file:
+            # Lire tout le contenu du fichier
+            content = file.read()
+        string_list = content.splitlines()
+        return string_list[0:len(string_list) - 1]
+    except:
+        return []
+
 def getSoupFromURL(driver,url):
     print("  > Opening URL...")
     driver.get(url)
@@ -36,10 +48,11 @@ def scrapFromKeywork(keyword,pageCount):
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     # URL de la page web
-    url = 'https://fr.indeed.com/jobs?q='+keyword+'&l=Lyon+%2869%29&sort=date&from=searchOnDesktopSerp&start'
+    url = 'https://fr.indeed.com/jobs?q='+keyword+'&l=Lyon+%2869%29&filter=0&sort=date&from=searchOnDesktopSerp&start'
     print("Using URL=" + url)
 
     vjk_ids = []
+    knownVJK = loadKnownVJK("VJK.txt")
 
     for i in range(pageCount):
         ji = i * 10
@@ -58,9 +71,14 @@ def scrapFromKeywork(keyword,pageCount):
             if vjk_ids.count(fvjk) > 0:
                 print("Reached end of pages")
                 break
+            if knownVJK.count(fvjk) :
+                continue
             vjk_ids.append(fvjk)
+            with open('VJK.txt', 'a', encoding='utf-8') as file:
+                file.write(fvjk + "\n")
 
     job_descriptions = []
+    job_titles = []
 
     for vkj_id in vjk_ids:
         url_1 = url + "&vjk=" + vkj_id
@@ -69,11 +87,12 @@ def scrapFromKeywork(keyword,pageCount):
         print("Done.")
         jobdescription_div = soup.find('div', class_=job_description_class)
         if jobdescription_div is None:
-            print("None jobdescription_div for jvk " + vkj_id +  " !!!")
+            print("None job description_div for jvk " + vkj_id +  " !!!")
         else:
+            job_titles.append(jobdescription_div.find("span").get_text())
             job_descriptions.append(jobdescription_div.get_text())
 
     # Fermer le navigateur une fois le scraping terminé
     driver.quit()
 
-    return job_descriptions
+    return (job_titles,job_descriptions)

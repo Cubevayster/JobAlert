@@ -1,0 +1,10 @@
+Je suis un jeune diplômé en Master Informatique spécialisé dans la 3D, le jeu vidéo, l'imagerie et l'IA.
+Je cherche idéalement un CDI en temps plein, payé autour des 30000€ bruts annuels.
+Je recherche un poste de développeur ou ingénieur, les tâches doivent contenir de la programmation.
+Je sais programmer en C++, C, Java, Python, C#, également un peu de HTML, CSS et Javascript. 
+Je connais particulièrement bien Unity, je connais OpenGL et QT.
+Je peux apprendre d'autres technologies pour le poste si necessaire.
+Je ne recherche pas de stage, je recherche un premier emploi, donc ouvert au profils avec peu d'expérience.
+Ces offres indiquent généralement "Junior" pour désigner qu'elles sont ouvertes aux jeunes diplômés, et m'intéressent tout particulièrement.
+Les offres indiquant "Senoir" recherchent quelqu'un de très expérimenté, et ne me conviennent donc pas.
+Les offres demandant un peu d'expérience (1 ou 2 années) peuvent tout de même être intéressantes dans certains cas.
