@@ -2,6 +2,7 @@ from ctypes import PyDLL
 
 import requests
 from bs4 import BeautifulSoup
+from seleniumbase import Driver
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -45,7 +46,9 @@ def getSoupFromURL(driver,url):
     return BeautifulSoup(page_source, 'html.parser')
 
 def scrapFromKeywork(keyword,pageCount):
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
+    driver = Driver(uc=True, headless=True)
 
     # URL de la page web
     url = 'https://fr.indeed.com/jobs?q='+keyword+'&l=Lyon+%2869%29&filter=0&sort=date&from=searchOnDesktopSerp&start'
